@@ -2,17 +2,32 @@
 <html>
 <head>
   <style>
-    body {
-      background: linear-gradient(45deg, #ff00ff, #00ff00, #ff0000);
-      animation: gradient 0.5s ease infinite;
-      font-family: "Comic Sans MS", cursive;
-      overflow: hidden;
+    @keyframes scroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    body {
+      margin: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        #ff0000 0px,
+        #ff7f00 10px,
+        #ffff00 20px,
+        #00ff00 30px,
+        #0000ff 40px,
+        #4b0082 50px,
+        #8f00ff 60px
+      );
+      background-size: 100px 100px;
+      animation: scroll 2s linear infinite, rainbow 5s linear infinite;
+      font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
     }
 
     .container {
@@ -22,67 +37,83 @@
       justify-content: center;
       height: 100vh;
       position: relative;
+      mix-blend-mode: difference;
     }
 
     h1 {
       font-size: 72px;
-      color: yellow;
-      text-shadow: 5px 5px 0 blue, 
-                   -5px -5px 0 red,
-                   10px 10px 0 green;
-      animation: shake 0.1s ease infinite;
-      z-index: 100;
+      background: linear-gradient(45deg, yellow, orange, red);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 0 white;
+      position: relative;
+      animation: chaos 8s linear infinite;
+      mix-blend-mode: exclusion;
     }
 
-    @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); }
-      25% { transform: translate(-3px, 0px) rotate(1deg); }
-      50% { transform: translate(1px, -1px) rotate(0deg); }
-      75% { transform: translate(3px, 1px) rotate(-1deg); }
-      100% { transform: translate(1px, -1px) rotate(0deg); }
+    @keyframes chaos {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      20% { transform: translate(200px, 100px) rotate(180deg) scale(0.8); }
+      40% { transform: translate(-150px, -200px) rotate(-90deg) scale(1.2); }
+      60% { transform: translate(100px, -150px) rotate(270deg) scale(0.9); }
+      80% { transform: translate(-200px, 180px) rotate(-180deg) scale(1.1); }
+      100% { transform: translate(0, 0) rotate(360deg) scale(1); }
     }
 
     .dog {
       position: absolute;
       width: 150px;
       height: 150px;
-      animation: spin 1s linear infinite;
+      animation: spin 3s linear infinite;
+      mix-blend-mode: difference;
     }
 
     @keyframes spin {
       100% { transform: rotate(360deg); }
     }
 
-    .flash {
+    .letters {
+      position: absolute;
+      font-size: 48px;
+      animation: letterFloat 6s ease-in-out infinite;
+      opacity: 0.8;
+      mix-blend-mode: exclusion;
+    }
+
+    @keyframes letterFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(50px, -50px) rotate(45deg); }
+      50% { transform: translate(-50px, 50px) rotate(-45deg); }
+      75% { transform: translate(25px, 25px) rotate(90deg); }
+    }
+
+    marquee {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      background: white;
-      animation: flash 0.1s ease infinite;
-      pointer-events: none;
+      color: white;
+      font-size: 24px;
+      text-shadow: 1px 1px black;
       mix-blend-mode: difference;
     }
 
-    @keyframes flash {
-      0% { opacity: 0; }
-      50% { opacity: 0.3; }
-      100% { opacity: 0; }
-    }
+    .top { top: 0; }
+    .bottom { bottom: 0; }
   </style>
 </head>
 <body>
+  <marquee class="top" scrollamount="10">🔥 get rekt scrub 🔥 get rekt scrub 🔥 get rekt scrub 🔥</marquee>
   <div class="container">
     <h1>YOU HAVE BEEN PWNED!!!</h1>
-    <img class="dog" src="/api/placeholder/150/150" style="top: 10%; left: 10%;" alt="spinning doge">
-    <img class="dog" src="/api/placeholder/150/150" style="top: 70%; left: 80%;" alt="spinning doge">
-    <img class="dog" src="/api/placeholder/150/150" style="top: 40%; left: 60%;" alt="spinning doge">
-    <img class="dog" src="/api/placeholder/150/150" style="top: 80%; left: 20%;" alt="spinning doge">
-    <div class="flash"></div>
+    <div class="letters" style="top: 20%; left: 20%">👾</div>
+    <div class="letters" style="top: 70%; left: 30%">🤖</div>
+    <div class="letters" style="top: 30%; left: 70%">👻</div>
+    <div class="letters" style="top: 60%; left: 80%">🎮</div>
+    <img class="dog" src="/assets/images/doge.png" style="top: 10%; left: 10%; animation-duration: 4s;" alt="spinning doge">
+    <img class="dog" src="/assets/images/doge.png" style="top: 70%; left: 80%; animation-duration: 5s;" alt="spinning doge">
+    <img class="dog" src="/assets/images/doge.png" style="top: 40%; left: 60%; animation-duration: 6s;" alt="spinning doge">
+    <img class="dog" src="/assets/images/doge.png style="top: 80%; left: 20%; animation-duration: 7s;" alt="spinning doge">
   </div>
-  <audio autoplay loop>
-    <source src="data:audio/wav;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAAAwAAAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/+MYxAAAAANIAAAAAP///////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/4xjEEAAAA0gAAAAA////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav">
-  </audio>
+  <marquee class="bottom" scrollamount="10" direction="right">💀 l + ratio + cope + seethe 💀 l + ratio + cope + seethe 💀</marquee>
 </body>
 </html>
