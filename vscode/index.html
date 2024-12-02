@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: linear-gradient(45deg, #ff00ff, #00ff00, #ff0000);
+      animation: gradient 0.5s ease infinite;
+      font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 72px;
+      color: yellow;
+      text-shadow: 5px 5px 0 blue, 
+                   -5px -5px 0 red,
+                   10px 10px 0 green;
+      animation: shake 0.1s ease infinite;
+      z-index: 100;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      25% { transform: translate(-3px, 0px) rotate(1deg); }
+      50% { transform: translate(1px, -1px) rotate(0deg); }
+      75% { transform: translate(3px, 1px) rotate(-1deg); }
+      100% { transform: translate(1px, -1px) rotate(0deg); }
+    }
+
+    .dog {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      animation: flash 0.1s ease infinite;
+      pointer-events: none;
+      mix-blend-mode: difference;
+    }
+
+    @keyframes flash {
+      0% { opacity: 0; }
+      50% { opacity: 0.3; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>YOU HAVE BEEN PWNED!!!</h1>
+    <img class="dog" src="/api/placeholder/150/150" style="top: 10%; left: 10%;" alt="spinning doge">
+    <img class="dog" src="/api/placeholder/150/150" style="top: 70%; left: 80%;" alt="spinning doge">
+    <img class="dog" src="/api/placeholder/150/150" style="top: 40%; left: 60%;" alt="spinning doge">
+    <img class="dog" src="/api/placeholder/150/150" style="top: 80%; left: 20%;" alt="spinning doge">
+    <div class="flash"></div>
+  </div>
+  <audio autoplay loop>
+    <source src="data:audio/wav;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAAAwAAAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/+MYxAAAAANIAAAAAP///////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/4xjEEAAAA0gAAAAA////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="audio/wav">
+  </audio>
+</body>
+</html>
